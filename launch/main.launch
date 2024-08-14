@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+   <node name="serial_node1" pkg="rosserial_python" type="serial_node.py" required="true" output="screen">
+    <param name="port" value="/dev/ARDUINOFRONT"/>
+    <param name="baud" value="57600"/>
+  </node>
+
+   <node name="serial_node2" pkg="rosserial_python" type="serial_node.py" required="true" output="screen">
+    <param name="port" value="/dev/ARDUINOBACK"/>
+    <param name="baud" value="57600"/>
+  </node>
+
+  <node pkg="main" type="main" name="main_node" respawn="false" output="screen" launch-prefix="bash -c 'sleep 5; $0 $@'">
+  </node>
+
+  <node pkg="main" type="main_2" name="main_2_node" respawn="false" output="screen">
+  </node>
+  
+</launch>
+
